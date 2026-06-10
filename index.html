@@ -7,73 +7,65 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="موٹو ٹریکر"/>
-<meta name="description" content="موٹر سائیکل فیول اور خرچ ٹریکر"/>
 <title>موٹو ٹریکر 🏍️</title>
 <script>
-const manifest = {
-  name: "موٹو ٹریکر",
-  short_name: "موٹو ٹریکر",
-  start_url: ".",
-  display: "standalone",
-  background_color: "#0F1117",
-  theme_color: "#FF6B35",
-  icons: [{src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F1117'/><text y='.9em' font-size='80' x='10'>🏍️</text></svg>", sizes: "192x192", type: "image/svg+xml"}]
-};
-const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
-const link = document.createElement('link');
-link.rel = 'manifest'; link.href = URL.createObjectURL(blob);
-document.head.appendChild(link);
+const manifest = {name:"موٹو ٹریکر",short_name:"موٹو ٹریکر",start_url:".",display:"standalone",background_color:"#0F1117",theme_color:"#FF6B35",icons:[{src:"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F1117'/><text y='.9em' font-size='80' x='10'>🏍️</text></svg>",sizes:"192x192",type:"image/svg+xml"}]};
+const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
+const link=document.createElement('link');link.rel='manifest';link.href=URL.createObjectURL(blob);document.head.appendChild(link);
 </script>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body { background: #0F1117; color: #E8E8E8; font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, sans-serif; direction: rtl; min-height: 100vh; }
-#root { max-width: 480px; margin: 0 auto; min-height: 100vh; }
-.header { background: linear-gradient(135deg,#1A1F2E,#252B3B); padding: 18px 18px 14px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #FF6B35; position: sticky; top: 0; z-index: 10; }
-.header-icon { font-size: 34px; }
-.header-title { font-size: 20px; font-weight: 700; color: #FF6B35; }
-.header-sub { font-size: 12px; color: #888; margin-top: 2px; }
-.tabs { display: flex; background: #161B27; border-bottom: 1px solid #2A2F40; }
-.tab { flex: 1; padding: 11px 4px; background: none; border: none; color: #888; cursor: pointer; font-size: 12px; font-family: inherit; }
-.tab.active { color: #FF6B35; border-bottom: 2px solid #FF6B35; font-weight: 700; background: #1A1F2E; }
-.toast { background: #252B3B; color: #E8E8E8; padding: 10px 16px; margin: 10px 14px 0; border-radius: 8px; border: 1px solid #3A4050; font-size: 13px; text-align: center; }
-.content { padding: 14px 12px; }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-.stat-card { background: #1A1F2E; border-radius: 12px; padding: 12px 10px; text-align: center; }
-.stat-emoji { font-size: 20px; }
-.stat-val { font-size: 17px; font-weight: 700; margin: 5px 0 2px; }
-.stat-label { font-size: 11px; color: #888; }
-.card { background: #1A1F2E; border-radius: 14px; padding: 14px 13px; margin-bottom: 13px; border: 1px solid #252B3B; }
-.card-title { font-size: 14px; font-weight: 700; color: #FF6B35; margin-bottom: 12px; }
-.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
-.bar-label { font-size: 11px; color: #888; width: 55px; flex-shrink: 0; }
-.bar-track { flex: 1; background: #252B3B; border-radius: 4px; height: 7px; overflow: hidden; }
-.bar-fill { height: 100%; background: linear-gradient(90deg,#FF6B35,#FF8C5A); border-radius: 4px; }
-.bar-amt { font-size: 11px; color: #CCC; width: 68px; text-align: left; flex-shrink: 0; }
-.info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #252B3B; font-size: 13px; }
-.info-val { color: #FF6B35; font-weight: 600; }
-.lbl { font-size: 12px; color: #AAA; margin: 11px 0 4px; }
-input[type=text], input[type=number], input[type=date] { width: 100%; background: #252B3B; border: 1px solid #3A4050; border-radius: 8px; color: #E8E8E8; padding: 10px 11px; font-size: 14px; font-family: inherit; outline: none; direction: rtl; appearance: none; -webkit-appearance: none; }
-input:focus { border-color: #FF6B35; }
-.mode-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
-.mode-btn { flex: 1; min-width: 0; padding: 9px 3px; background: #252B3B; border: 1px solid #3A4050; border-radius: 8px; color: #888; cursor: pointer; font-size: 11px; font-family: inherit; text-align: center; }
-.mode-btn.active { background: #2A1F16; border-color: #FF6B35; color: #FF6B35; font-weight: 700; }
-.km-badge { border-radius: 8px; padding: 8px 11px; font-size: 12px; margin-top: 8px; }
-.km-badge.green { background: #1E2A1E; border: 1px solid #2E5030; color: #7ECE80; }
-.km-badge.grey { background: #1E1E2E; border: 1px solid #2A2A3E; color: #666; }
-.calc-preview { background: #1E2A1E; border: 1px solid #2E5030; border-radius: 8px; padding: 10px 11px; font-size: 14px; color: #7ECE80; margin: 10px 0 4px; font-weight: 600; }
-.btn-primary { width: 100%; background: linear-gradient(135deg,#FF6B35,#FF8C5A); color: #FFF; border: none; border-radius: 10px; padding: 13px; font-size: 15px; font-family: inherit; font-weight: 700; cursor: pointer; margin-top: 14px; }
-.entry-card { background: #1A1F2E; border-radius: 12px; padding: 12px 11px; margin-bottom: 10px; border: 1px solid #252B3B; }
-.entry-top { display: flex; justify-content: space-between; margin-bottom: 5px; }
-.entry-date { font-size: 12px; color: #888; }
-.entry-total { font-size: 15px; font-weight: 700; color: #FF6B35; }
-.entry-travel { font-size: 13px; color: #CCC; margin-bottom: 7px; font-weight: 600; }
-.entry-details { display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: 12px; color: #BBB; margin-bottom: 6px; }
-.entry-note { font-size: 11px; color: #666; margin-bottom: 7px; }
-.btn-delete { background: none; border: 1px solid #3A2020; color: #CC5555; border-radius: 6px; padding: 4px 11px; font-size: 11px; font-family: inherit; cursor: pointer; }
-.dropdown { position: absolute; top: 100%; right: 0; left: 0; background: #252B3B; border: 1px solid #3A4050; border-radius: 8px; z-index: 100; max-height: 180px; overflow-y: auto; }
-.drop-item { padding: 10px 12px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #2A2F40; }
-.drop-wrap { position: relative; }
-.empty { color: #666; font-size: 13px; text-align: center; padding: 14px 0; }
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{background:#0F1117;color:#E8E8E8;font-family:'Noto Nastaliq Urdu','Segoe UI',Tahoma,sans-serif;direction:rtl;min-height:100vh;}
+#root{max-width:480px;margin:0 auto;min-height:100vh;}
+.header{background:linear-gradient(135deg,#1A1F2E,#252B3B);padding:18px 18px 14px;display:flex;align-items:center;gap:12px;border-bottom:2px solid #FF6B35;position:sticky;top:0;z-index:10;}
+.header-icon{font-size:34px;}.header-title{font-size:20px;font-weight:700;color:#FF6B35;}.header-sub{font-size:12px;color:#888;margin-top:2px;}
+.tabs{display:flex;background:#161B27;border-bottom:1px solid #2A2F40;}
+.tab{flex:1;padding:11px 4px;background:none;border:none;color:#888;cursor:pointer;font-size:12px;font-family:inherit;}
+.tab.active{color:#FF6B35;border-bottom:2px solid #FF6B35;font-weight:700;background:#1A1F2E;}
+.toast{background:#252B3B;color:#E8E8E8;padding:10px 16px;margin:10px 14px 0;border-radius:8px;border:1px solid #3A4050;font-size:13px;text-align:center;}
+.content{padding:14px 12px;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.stat-card{background:#1A1F2E;border-radius:12px;padding:12px 10px;text-align:center;}
+.stat-emoji{font-size:20px;}.stat-val{font-size:17px;font-weight:700;margin:5px 0 2px;}.stat-label{font-size:11px;color:#888;}
+.card{background:#1A1F2E;border-radius:14px;padding:14px 13px;margin-bottom:13px;border:1px solid #252B3B;}
+.card-title{font-size:14px;font-weight:700;color:#FF6B35;margin-bottom:12px;}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.bar-label{font-size:11px;color:#888;width:55px;flex-shrink:0;}
+.bar-track{flex:1;background:#252B3B;border-radius:4px;height:7px;overflow:hidden;}
+.bar-fill{height:100%;background:linear-gradient(90deg,#FF6B35,#FF8C5A);border-radius:4px;}
+.bar-amt{font-size:11px;color:#CCC;width:68px;text-align:left;flex-shrink:0;}
+.info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #252B3B;font-size:13px;}
+.info-val{color:#FF6B35;font-weight:600;}
+.insight-box{background:#1A2A1A;border:1px solid #2E5030;border-radius:10px;padding:12px;margin-bottom:10px;}
+.insight-title{font-size:12px;color:#7ECE80;margin-bottom:8px;font-weight:700;}
+.insight-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid #1E3A1E;}
+.insight-val{color:#A8E6A0;font-weight:600;}
+.lbl{font-size:12px;color:#AAA;margin:11px 0 4px;}
+.hint{font-size:11px;color:#666;margin-top:3px;}
+input[type=text],input[type=number],input[type=date]{width:100%;background:#252B3B;border:1px solid #3A4050;border-radius:8px;color:#E8E8E8;padding:10px 11px;font-size:14px;font-family:inherit;outline:none;direction:rtl;appearance:none;-webkit-appearance:none;}
+input:focus{border-color:#FF6B35;}
+.mode-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px;}
+.mode-btn{flex:1;min-width:0;padding:9px 3px;background:#252B3B;border:1px solid #3A4050;border-radius:8px;color:#888;cursor:pointer;font-size:11px;font-family:inherit;text-align:center;}
+.mode-btn.active{background:#2A1F16;border-color:#FF6B35;color:#FF6B35;font-weight:700;}
+.km-badge{border-radius:8px;padding:8px 11px;font-size:12px;margin-top:8px;}
+.km-badge.green{background:#1E2A1E;border:1px solid #2E5030;color:#7ECE80;}
+.km-badge.grey{background:#1E1E2E;border:1px solid #2A2A3E;color:#666;}
+.km-badge.blue{background:#1A1E2A;border:1px solid #2A3050;color:#7EA0CE;}
+.calc-preview{background:#1E2A1E;border:1px solid #2E5030;border-radius:8px;padding:10px 11px;font-size:14px;color:#7ECE80;margin:10px 0 4px;font-weight:600;}
+.btn-primary{width:100%;background:linear-gradient(135deg,#FF6B35,#FF8C5A);color:#FFF;border:none;border-radius:10px;padding:13px;font-size:15px;font-family:inherit;font-weight:700;cursor:pointer;margin-top:14px;}
+.entry-card{background:#1A1F2E;border-radius:12px;padding:12px 11px;margin-bottom:10px;border:1px solid #252B3B;}
+.entry-top{display:flex;justify-content:space-between;margin-bottom:5px;}
+.entry-date{font-size:12px;color:#888;}.entry-total{font-size:15px;font-weight:700;color:#FF6B35;}
+.entry-travel{font-size:13px;color:#CCC;margin-bottom:7px;font-weight:600;}
+.entry-details{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:12px;color:#BBB;margin-bottom:6px;}
+.entry-note{font-size:11px;color:#666;margin-bottom:7px;}
+.btn-delete{background:none;border:1px solid #3A2020;color:#CC5555;border-radius:6px;padding:4px 11px;font-size:11px;font-family:inherit;cursor:pointer;}
+.dropdown{position:absolute;top:100%;right:0;left:0;background:#252B3B;border:1px solid #3A4050;border-radius:8px;z-index:100;max-height:180px;overflow-y:auto;}
+.drop-item{padding:10px 12px;cursor:pointer;font-size:13px;border-bottom:1px solid #2A2F40;}
+.drop-wrap{position:relative;}
+.empty{color:#666;font-size:13px;text-align:center;padding:14px 0;}
+.month-section{margin-bottom:6px;}
+.month-header{font-size:12px;color:#FF6B35;font-weight:700;padding:6px 0;border-bottom:1px solid #252B3B;margin-bottom:8px;}
 </style>
 </head>
 <body>
@@ -83,13 +75,12 @@ input:focus { border-color: #FF6B35; }
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
 const { useState, useEffect } = React;
-const STORAGE_KEY = "moto-v2";
+const STORAGE_KEY = "moto-v3";
 const formatPKR = n => "₨ " + Number(n).toLocaleString("en-PK");
-const CITIES = ["لاہور","کراچی","اسلام آباد","راولپنڈی","فیصل آباد","ملتان","پشاور","حیدرآباد","گوجرانوالہ","سیالکوٹ","کوئٹہ","سکھر","بہاولپور","گجرات","شیخوپورہ","جھنگ","ساہیوال","مردان","میرپور","جہلم","چکوال","رحیم یار خان","ڈیرہ غازی خان"];
 const CITY_KM = {"لاہور-کراچی":1210,"کراچی-لاہور":1210,"لاہور-اسلام آباد":375,"اسلام آباد-لاہور":375,"لاہور-فیصل آباد":128,"فیصل آباد-لاہور":128,"لاہور-ملتان":340,"ملتان-لاہور":340,"کراچی-حیدرآباد":155,"حیدرآباد-کراچی":155,"اسلام آباد-پشاور":170,"پشاور-اسلام آباد":170,"اسلام آباد-راولپنڈی":14,"راولپنڈی-اسلام آباد":14,"لاہور-گوجرانوالہ":80,"گوجرانوالہ-لاہور":80,"لاہور-سیالکوٹ":120,"سیالکوٹ-لاہور":120,"لاہور-جہلم":160,"جہلم-لاہور":160,"لاہور-گجرات":110,"گجرات-لاہور":110};
-const emptyForm = {date:"",travelMode:"city",fromCity:"",toCity:"",localPlace:"",rounds:"",km:"",liters:"",pricePerLiter:"",note:""};
-function getKm(f){ if(f.travelMode==="km") return parseFloat(f.km)||null; if(f.travelMode==="city"&&f.fromCity&&f.toCity) return CITY_KM[f.fromCity+"-"+f.toCity]||null; return null; }
-function travelLabel(e){ if(e.travelMode==="city") return "🏙️ "+e.fromCity+" ← "+e.toCity; if(e.travelMode==="local") return "🔄 "+e.localPlace+(e.rounds?" — "+e.rounds+" چکر":""); if(e.travelMode==="km") return "🛣️ "+e.km+" km"; return ""; }
+const emptyForm = {date:"",travelMode:"local",fromCity:"",toCity:"",localPlace:"",rounds:"",kmPerRound:"",km:"",liters:"",pricePerLiter:"",note:""};
+function getKm(f){ if(f.travelMode==="km") return parseFloat(f.km)||null; if(f.travelMode==="city"&&f.fromCity&&f.toCity) return CITY_KM[f.fromCity+"-"+f.toCity]||null; if(f.travelMode==="local"&&f.rounds&&f.kmPerRound) return parseFloat(f.rounds)*parseFloat(f.kmPerRound); return null; }
+function travelLabel(e){ if(e.travelMode==="city") return "🏙️ "+e.fromCity+" ← "+e.toCity; if(e.travelMode==="local") return "🔄 "+e.localPlace+(e.rounds?" — "+e.rounds+" چکر":"")+(e.kmPerRound?" ("+e.kmPerRound+"km/چکر)":""); if(e.travelMode==="km") return "🛣️ "+e.km+" km"; return ""; }
 function load(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"); }catch{ return []; } }
 function save(a){ try{ localStorage.setItem(STORAGE_KEY,JSON.stringify(a)); }catch{} }
 function App(){
@@ -101,10 +92,10 @@ function App(){
   function addEntry(){
     if(!form.date||!form.liters||!form.pricePerLiter){showToast("⚠️ تاریخ، لیٹر اور قیمت ضروری ہے");return;}
     if(form.travelMode==="city"&&(!form.fromCity||!form.toCity)){showToast("⚠️ دونوں شہر لکھیں");return;}
-    if(form.travelMode==="local"&&(!form.localPlace||!form.rounds)){showToast("⚠️ جگہ اور چکر لکھیں");return;}
+    if(form.travelMode==="local"&&!form.localPlace){showToast("⚠️ جگہ لکھیں");return;}
     if(form.travelMode==="km"&&!form.km){showToast("⚠️ کلومیٹر لکھیں");return;}
     const km=getKm(form);
-    const e={id:Date.now(),date:form.date,travelMode:form.travelMode,fromCity:form.fromCity,toCity:form.toCity,localPlace:form.localPlace,rounds:form.rounds?parseFloat(form.rounds):null,km,liters:parseFloat(form.liters),pricePerLiter:parseFloat(form.pricePerLiter),note:form.note,total:parseFloat(form.liters)*parseFloat(form.pricePerLiter)};
+    const e={id:Date.now(),date:form.date,travelMode:form.travelMode,fromCity:form.fromCity,toCity:form.toCity,localPlace:form.localPlace,rounds:form.rounds?parseFloat(form.rounds):null,kmPerRound:form.kmPerRound?parseFloat(form.kmPerRound):null,km,liters:parseFloat(form.liters),pricePerLiter:parseFloat(form.pricePerLiter),note:form.note,total:parseFloat(form.liters)*parseFloat(form.pricePerLiter)};
     const updated=[e,...entries]; setEntries(updated); save(updated);
     setForm(emptyForm); showToast("✅ اندراج محفوظ ہو گیا"); setTab("history");
   }
@@ -114,134 +105,79 @@ function App(){
   const kmE=entries.filter(e=>e.km);
   const totalKm=kmE.reduce((s,e)=>s+e.km,0);
   const kmLiters=kmE.reduce((s,e)=>s+e.liters,0);
-  const avgMileage=kmLiters>0?(totalKm/kmLiters).toFixed(1):"-";
-  const months={}; entries.forEach(e=>{const m=e.date&&e.date.slice(0,7);if(m)months[m]=(months[m]||0)+e.total;});
-  const monthList=Object.entries(months).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,4);
+  const avgMileage=kmLiters>0?(totalKm/kmLiters).toFixed(1):null;
+  const avgCostPerKm=totalKm>0?(kmE.reduce((s,e)=>s+e.total,0)/totalKm).toFixed(1):null;
+  const months={};
+  entries.forEach(e=>{ const m=e.date&&e.date.slice(0,7); if(m){ if(!months[m]) months[m]={spent:0,liters:0,km:0,kmLiters:0,count:0}; months[m].spent+=e.total; months[m].liters+=e.liters; months[m].count++; if(e.km){months[m].km+=e.km;months[m].kmLiters+=e.liters;} } });
+  const monthList=Object.entries(months).sort((a,b)=>b[0].localeCompare(a[0]));
+  const litersFor100km=avgMileage?(100/parseFloat(avgMileage)).toFixed(1):null;
   const estKm=getKm(form);
-  return (
-    React.createElement("div", null,
-      React.createElement("div", {className:"header"},
-        React.createElement("div", {className:"header-icon"}, "🏍️"),
-        React.createElement("div", null,
-          React.createElement("div", {className:"header-title"}, "موٹو ٹریکر"),
-          React.createElement("div", {className:"header-sub"}, "فیول اور سفر کا حساب")
-        )
+  const previewTotal=form.liters&&form.pricePerLiter?form.liters*form.pricePerLiter:null;
+  const previewMileage=estKm&&form.liters?(estKm/form.liters).toFixed(1):null;
+  const historyByMonth={};
+  entries.forEach(e=>{ const m=e.date&&e.date.slice(0,7); if(m){if(!historyByMonth[m])historyByMonth[m]=[];historyByMonth[m].push(e);} });
+  const historyMonths=Object.entries(historyByMonth).sort((a,b)=>b[0].localeCompare(a[0]));
+  return React.createElement("div", null,
+    React.createElement("div",{className:"header"},React.createElement("div",{className:"header-icon"},"🏍️"),React.createElement("div",null,React.createElement("div",{className:"header-title"},"موٹو ٹریکر"),React.createElement("div",{className:"header-sub"},"فیول اور سفر کا حساب"))),
+    React.createElement("div",{className:"tabs"},[["dashboard","📊 ڈیش بورڈ"],["add","➕ اضافہ"],["history","📋 تاریخ"]].map(([k,l])=>React.createElement("button",{key:k,className:"tab"+(tab===k?" active":""),onClick:()=>setTab(k)},l))),
+    toast&&React.createElement("div",{className:"toast"},toast),
+    tab==="dashboard"&&React.createElement("div",{className:"content"},
+      React.createElement("div",{className:"stats-grid"},[["💰","کل خرچ",formatPKR(totalSpent),"#FF6B35"],["⛽","کل فیول",totalLiters.toFixed(2)+" L","#4ECDC4"],["🛣️","کل km",totalKm>0?totalKm.toFixed(0)+" km":"—","#45B7D1"],["🔥","مائلیج",avgMileage?avgMileage+" km/L":"—","#96CEB4"]].map(([em,lb,vl,cl])=>React.createElement("div",{key:lb,className:"stat-card",style:{borderTop:"3px solid "+cl}},React.createElement("div",{className:"stat-emoji"},em),React.createElement("div",{className:"stat-val"},vl),React.createElement("div",{className:"stat-label"},lb)))),
+      avgMileage&&React.createElement("div",{className:"insight-box"},
+        React.createElement("div",{className:"insight-title"},"🧠 ذہین حساب"),
+        [["1 لیٹر میں سفر",avgMileage+" km"],["100 km کے لیے فیول",litersFor100km+" لیٹر"],avgCostPerKm&&["1 km کا خرچ","₨ "+avgCostPerKm],["500 روپے میں سفر","~"+(parseFloat(avgMileage)*500/(entries[0]?.pricePerLiter||280)).toFixed(0)+" km"]].filter(Boolean).map(([l,v])=>React.createElement("div",{key:l,className:"insight-row"},React.createElement("span",null,l),React.createElement("span",{className:"insight-val"},v)))
       ),
-      React.createElement("div", {className:"tabs"},
-        [["dashboard","📊 ڈیش بورڈ"],["add","➕ اضافہ"],["history","📋 تاریخ"]].map(([k,l])=>
-          React.createElement("button", {key:k, className:"tab"+(tab===k?" active":""), onClick:()=>setTab(k)}, l)
-        )
+      React.createElement("div",{className:"card"},React.createElement("div",{className:"card-title"},"📅 ماہانہ خرچ"),monthList.length===0?React.createElement("div",{className:"empty"},"ابھی کوئی ڈیٹا نہیں"):monthList.map(([m,d])=>React.createElement("div",{key:m},React.createElement("div",{className:"bar-row"},React.createElement("div",{className:"bar-label"},m),React.createElement("div",{className:"bar-track"},React.createElement("div",{className:"bar-fill",style:{width:(d.spent/(monthList[0][1].spent||1)*100)+"%"}})),React.createElement("div",{className:"bar-amt"},formatPKR(d.spent))),React.createElement("div",{style:{fontSize:11,color:"#666",marginBottom:8,marginRight:63}},d.liters.toFixed(1)+"L · "+d.count+" بار"+(d.km>0?" · "+(d.km/d.kmLiters).toFixed(1)+" km/L":""))))),
+      React.createElement("div",{className:"card"},React.createElement("div",{className:"card-title"},"⚡ خلاصہ"),[["کل اندراجات",entries.length+" بار"],["کل فیول",totalLiters.toFixed(2)+" لیٹر"],totalKm>0&&["کل km",totalKm.toFixed(0)+" km"],avgMileage&&["اوسط مائلیج",avgMileage+" km/L"],avgCostPerKm&&["فی km خرچ","₨ "+avgCostPerKm],entries[0]&&["آخری بھراؤ",entries[0].date]].filter(Boolean).map(([l,v])=>React.createElement("div",{key:l,className:"info-row"},React.createElement("span",null,l),React.createElement("span",{className:"info-val"},v))))
+    ),
+    tab==="add"&&React.createElement("div",{className:"content"},React.createElement("div",{className:"card"},
+      React.createElement("div",{className:"card-title"},"⛽ نیا اندراج"),
+      React.createElement("div",{className:"lbl"},"تاریخ *"),React.createElement("input",{type:"date",value:form.date,onChange:e=>setForm({...form,date:e.target.value})}),
+      React.createElement("div",{className:"lbl"},"سفر کی قسم *"),
+      React.createElement("div",{className:"mode-row"},[["local","🔄 گلی / چکر"],["city","🏙️ شہر سے شہر"],["km","📏 km معلوم ہے"]].map(([k,l])=>React.createElement("button",{key:k,className:"mode-btn"+(form.travelMode===k?" active":""),onClick:()=>setForm({...form,travelMode:k})},l))),
+      form.travelMode==="local"&&React.createElement("div",null,
+        React.createElement("div",{className:"lbl"},"جگہ / گلی *"),React.createElement("input",{type:"text",placeholder:"مثال: گھر سے بازار",value:form.localPlace,onChange:e=>setForm({...form,localPlace:e.target.value})}),
+        React.createElement("div",{className:"lbl"},"ایک چکر کتنے km؟"),React.createElement("input",{type:"number",placeholder:"مثال: 2",value:form.kmPerRound,onChange:e=>setForm({...form,kmPerRound:e.target.value})}),
+        React.createElement("div",{className:"hint"},"گوگل میپس پر دیکھ کر اندازہ لگائیں"),
+        React.createElement("div",{className:"lbl"},"چکر کتنے؟"),React.createElement("input",{type:"number",placeholder:"مثال: 3",value:form.rounds,onChange:e=>setForm({...form,rounds:e.target.value})}),
+        estKm&&React.createElement("div",{className:"km-badge blue"},"📍 کل اندازہ: "+estKm.toFixed(1)+" km")
       ),
-      toast && React.createElement("div", {className:"toast"}, toast),
-      tab==="dashboard" && React.createElement("div", {className:"content"},
-        React.createElement("div", {className:"stats-grid"},
-          [["💰","کل خرچ",formatPKR(totalSpent),"#FF6B35"],["⛽","کل فیول",totalLiters.toFixed(1)+" L","#4ECDC4"],["🛣️","اندازہ km",totalKm>0?totalKm.toFixed(0)+" km":"—","#45B7D1"],["🔥","اوسط مائلیج",avgMileage!=="-"?avgMileage+" km/L":"—","#96CEB4"]].map(([em,lb,vl,cl])=>
-            React.createElement("div", {key:lb, className:"stat-card", style:{borderTop:"3px solid "+cl}},
-              React.createElement("div", {className:"stat-emoji"}, em),
-              React.createElement("div", {className:"stat-val"}, vl),
-              React.createElement("div", {className:"stat-label"}, lb)
-            )
-          )
-        ),
-        React.createElement("div", {className:"card"},
-          React.createElement("div", {className:"card-title"}, "📈 ماہانہ خرچ"),
-          monthList.length===0 ? React.createElement("div", {className:"empty"}, "ابھی کوئی ڈیٹا نہیں۔ پہلا اندراج کریں!") :
-          monthList.map(([m,a])=>
-            React.createElement("div", {key:m, className:"bar-row"},
-              React.createElement("div", {className:"bar-label"}, m),
-              React.createElement("div", {className:"bar-track"}, React.createElement("div", {className:"bar-fill", style:{width:(a/(monthList[0][1]||1)*100)+"%"}})),
-              React.createElement("div", {className:"bar-amt"}, formatPKR(a))
-            )
-          )
-        ),
-        React.createElement("div", {className:"card"},
-          React.createElement("div", {className:"card-title"}, "⚡ خلاصہ"),
-          [["کل اندراجات",entries.length],["کل لیٹر",totalLiters.toFixed(2)+" L"],entries[0]&&["آخری بھراؤ",entries[0].date],avgMileage!=="-"&&["اوسط مائلیج",avgMileage+" km/L"]].filter(Boolean).map(([l,v])=>
-            React.createElement("div", {key:l, className:"info-row"},
-              React.createElement("span", null, l),
-              React.createElement("span", {className:"info-val"}, v)
-            )
-          )
-        )
+      form.travelMode==="city"&&React.createElement("div",null,
+        React.createElement("div",{className:"lbl"},"روانگی کا شہر *"),React.createElement(CityInput,{val:form.fromCity,onChange:v=>setForm({...form,fromCity:v}),placeholder:"مثال: لاہور"}),
+        React.createElement("div",{className:"lbl"},"منزل کا شہر *"),React.createElement(CityInput,{val:form.toCity,onChange:v=>setForm({...form,toCity:v}),placeholder:"مثال: اسلام آباد"}),
+        estKm&&React.createElement("div",{className:"km-badge green"},"📍 اندازہ: "+estKm+" km"),
+        form.fromCity&&form.toCity&&!estKm&&React.createElement("div",{className:"km-badge grey"},"ℹ️ فاصلہ ڈیٹا میں نہیں")
       ),
-      tab==="add" && React.createElement("div", {className:"content"},
-        React.createElement("div", {className:"card"},
-          React.createElement("div", {className:"card-title"}, "⛽ نیا اندراج"),
-          React.createElement("div", {className:"lbl"}, "تاریخ *"),
-          React.createElement("input", {type:"date", value:form.date, onChange:e=>setForm({...form,date:e.target.value})}),
-          React.createElement("div", {className:"lbl"}, "سفر کی قسم *"),
-          React.createElement("div", {className:"mode-row"},
-            [["city","🏙️ شہر سے شہر"],["local","🔄 گلی / چکر"],["km","📏 km معلوم ہے"]].map(([k,l])=>
-              React.createElement("button", {key:k, className:"mode-btn"+(form.travelMode===k?" active":""), onClick:()=>setForm({...form,travelMode:k})}, l)
-            )
-          ),
-          form.travelMode==="city" && React.createElement("div", null,
-            React.createElement("div", {className:"lbl"}, "روانگی کا شہر *"),
-            React.createElement(CityInput, {val:form.fromCity, onChange:v=>setForm({...form,fromCity:v}), placeholder:"مثال: لاہور"}),
-            React.createElement("div", {className:"lbl"}, "منزل کا شہر *"),
-            React.createElement(CityInput, {val:form.toCity, onChange:v=>setForm({...form,toCity:v}), placeholder:"مثال: اسلام آباد"}),
-            estKm && React.createElement("div", {className:"km-badge green"}, "📍 اندازہ فاصلہ: "+estKm+" km"),
-            form.fromCity&&form.toCity&&!estKm && React.createElement("div", {className:"km-badge grey"}, "ℹ️ فاصلہ ڈیٹا میں نہیں")
-          ),
-          form.travelMode==="local" && React.createElement("div", null,
-            React.createElement("div", {className:"lbl"}, "جگہ / گلی *"),
-            React.createElement("input", {type:"text", placeholder:"مثال: گھر سے بازار", value:form.localPlace, onChange:e=>setForm({...form,localPlace:e.target.value})}),
-            React.createElement("div", {className:"lbl"}, "چکر کتنے *"),
-            React.createElement("input", {type:"number", placeholder:"مثال: 3", value:form.rounds, onChange:e=>setForm({...form,rounds:e.target.value})}),
-            React.createElement("div", {className:"km-badge grey"}, "ℹ️ مقامی سفر — صرف خرچ محفوظ ہوگا")
-          ),
-          form.travelMode==="km" && React.createElement("div", null,
-            React.createElement("div", {className:"lbl"}, "کلومیٹر *"),
-            React.createElement("input", {type:"number", placeholder:"مثال: 45", value:form.km, onChange:e=>setForm({...form,km:e.target.value})})
-          ),
-          React.createElement("div", {className:"lbl"}, "فیول (لیٹر) *"),
-          React.createElement("input", {type:"number", placeholder:"مثال: 3.5", value:form.liters, onChange:e=>setForm({...form,liters:e.target.value})}),
-          React.createElement("div", {className:"lbl"}, "فی لیٹر قیمت (₨) *"),
-          React.createElement("input", {type:"number", placeholder:"مثال: 280", value:form.pricePerLiter, onChange:e=>setForm({...form,pricePerLiter:e.target.value})}),
-          form.liters&&form.pricePerLiter && React.createElement("div", {className:"calc-preview"}, "💵 کل: "+formatPKR(form.liters*form.pricePerLiter)+(estKm&&form.liters?" · "+(estKm/form.liters).toFixed(1)+" km/L":"")),
-          React.createElement("div", {className:"lbl"}, "نوٹ (اختیاری)"),
-          React.createElement("input", {type:"text", placeholder:"مثال: PSO پمپ", value:form.note, onChange:e=>setForm({...form,note:e.target.value})}),
-          React.createElement("button", {className:"btn-primary", onClick:addEntry}, "محفوظ کریں ✓")
-        )
-      ),
-      tab==="history" && React.createElement("div", {className:"content"},
-        entries.length===0 ?
-          React.createElement("div", {className:"card", style:{textAlign:"center"}},
-            React.createElement("div", {style:{fontSize:46,marginBottom:10}}, "📭"),
-            React.createElement("div", {className:"empty"}, "ابھی کوئی اندراج نہیں۔"),
-            React.createElement("button", {className:"btn-primary", style:{marginTop:14}, onClick:()=>setTab("add")}, "پہلا اندراج کریں")
-          ) :
-          entries.map(e=>
-            React.createElement("div", {key:e.id, className:"entry-card"},
-              React.createElement("div", {className:"entry-top"},
-                React.createElement("div", {className:"entry-date"}, "📅 "+e.date),
-                React.createElement("div", {className:"entry-total"}, formatPKR(e.total))
-              ),
-              React.createElement("div", {className:"entry-travel"}, travelLabel(e)),
-              React.createElement("div", {className:"entry-details"},
-                React.createElement("span", null, "⛽ "+e.liters+"L"),
-                React.createElement("span", null, "₨"+e.pricePerLiter+"/L"),
-                e.km && React.createElement("span", null, "🛣️ "+e.km+"km"),
-                e.km && React.createElement("span", null, "📈 "+(e.km/e.liters).toFixed(1)+" km/L"),
-                !e.km&&e.rounds && React.createElement("span", null, "🔄 "+e.rounds+" چکر")
-              ),
-              e.note && React.createElement("div", {className:"entry-note"}, "📝 "+e.note),
-              React.createElement("button", {className:"btn-delete", onClick:()=>deleteEntry(e.id)}, "🗑️ حذف")
-            )
-          )
-      )
+      form.travelMode==="km"&&React.createElement("div",null,React.createElement("div",{className:"lbl"},"کلومیٹر *"),React.createElement("div",{className:"hint"},"میٹر کا پہلے اور بعد کا فرق"),React.createElement("input",{type:"number",placeholder:"مثال: 45",value:form.km,onChange:e=>setForm({...form,km:e.target.value})})),
+      React.createElement("div",{className:"lbl"},"فیول (لیٹر) *"),React.createElement("input",{type:"number",placeholder:"مثال: 1.5",value:form.liters,onChange:e=>setForm({...form,liters:e.target.value})}),
+      React.createElement("div",{className:"lbl"},"فی لیٹر قیمت (₨) *"),React.createElement("input",{type:"number",placeholder:"مثال: 280",value:form.pricePerLiter,onChange:e=>setForm({...form,pricePerLiter:e.target.value})}),
+      previewTotal&&React.createElement("div",{className:"calc-preview"},"💵 کل: "+formatPKR(previewTotal)+(previewMileage?" · 🔥 "+previewMileage+" km/L":"")),
+      React.createElement("div",{className:"lbl"},"نوٹ (اختیاری)"),React.createElement("input",{type:"text",placeholder:"مثال: Hascol پمپ",value:form.note,onChange:e=>setForm({...form,note:e.target.value})}),
+      React.createElement("button",{className:"btn-primary",onClick:addEntry},"محفوظ کریں ✓")
+    )),
+    tab==="history"&&React.createElement("div",{className:"content"},
+      entries.length===0?React.createElement("div",{className:"card",style:{textAlign:"center"}},React.createElement("div",{style:{fontSize:46,marginBottom:10}},"📭"),React.createElement("div",{className:"empty"},"ابھی کوئی اندراج نہیں۔"),React.createElement("button",{className:"btn-primary",style:{marginTop:14},onClick:()=>setTab("add")},"پہلا اندراج کریں")):
+      historyMonths.map(([m,ents])=>{
+        const mS=ents.reduce((s,e)=>s+e.total,0),mL=ents.reduce((s,e)=>s+e.liters,0),mKE=ents.filter(e=>e.km),mK=mKE.reduce((s,e)=>s+e.km,0),mKL=mKE.reduce((s,e)=>s+e.liters,0),mM=mKL>0?(mK/mKL).toFixed(1):null;
+        return React.createElement("div",{key:m,className:"month-section"},
+          React.createElement("div",{className:"month-header"},m+" — "+formatPKR(mS)+" · "+mL.toFixed(1)+"L"+(mM?" · "+mM+" km/L":"")),
+          ents.map(e=>React.createElement("div",{key:e.id,className:"entry-card"},
+            React.createElement("div",{className:"entry-top"},React.createElement("div",{className:"entry-date"},"📅 "+e.date),React.createElement("div",{className:"entry-total"},formatPKR(e.total))),
+            React.createElement("div",{className:"entry-travel"},travelLabel(e)),
+            React.createElement("div",{className:"entry-details"},React.createElement("span",null,"⛽ "+e.liters+"L"),React.createElement("span",null,"₨"+e.pricePerLiter+"/L"),e.km&&React.createElement("span",null,"🛣️ "+e.km.toFixed(1)+"km"),e.km&&React.createElement("span",null,"🔥 "+(e.km/e.liters).toFixed(1)+" km/L"),!e.km&&e.rounds&&React.createElement("span",null,"🔄 "+e.rounds+" چکر")),
+            e.note&&React.createElement("div",{className:"entry-note"},"📝 "+e.note),
+            React.createElement("button",{className:"btn-delete",onClick:()=>deleteEntry(e.id)},"🗑️ حذف")
+          ))
+        );
+      })
     )
   );
 }
 function CityInput({val,onChange,placeholder}){
   const [show,setShow]=useState(false);
-  const filtered=CITIES.filter(c=>!val||c.includes(val));
-  return React.createElement("div", {className:"drop-wrap"},
-    React.createElement("input", {type:"text", placeholder, value:val, onChange:e=>{onChange(e.target.value);setShow(true);}, onFocus:()=>setShow(true), onBlur:()=>setTimeout(()=>setShow(false),200)}),
-    show&&filtered.length>0&&val && React.createElement("div", {className:"dropdown"},
-      filtered.slice(0,6).map(c=>React.createElement("div", {key:c, className:"drop-item", onClick:()=>{onChange(c);setShow(false);}}, c))
-    )
-  );
+  const CL=["لاہور","کراچی","اسلام آباد","راولپنڈی","فیصل آباد","ملتان","پشاور","حیدرآباد","گوجرانوالہ","سیالکوٹ","کوئٹہ","سکھر","بہاولپور","گجرات","شیخوپورہ","جھنگ","ساہیوال","مردان","میرپور","جہلم","چکوال","رحیم یار خان","ڈیرہ غازی خان"];
+  const f=CL.filter(c=>!val||c.includes(val));
+  return React.createElement("div",{className:"drop-wrap"},React.createElement("input",{type:"text",placeholder,value:val,onChange:e=>{onChange(e.target.value);setShow(true);},onFocus:()=>setShow(true),onBlur:()=>setTimeout(()=>setShow(false),200)}),show&&f.length>0&&val&&React.createElement("div",{className:"dropdown"},f.slice(0,6).map(c=>React.createElement("div",{key:c,className:"drop-item",onClick:()=>{onChange(c);setShow(false);}},c))));
 }
 ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
 </script>
